@@ -13,14 +13,14 @@ const Shirt = () => {
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
 
-    useFrame((state, delta) => easing.dampC(materials.lambert1.colorWrite,snap.color,0.25,delta));
+    useFrame((state, delta) => easing.dampC(materials.lambert1.color , snap.color , 0.25 , delta));
     
 
     // to update the shirt 
     const stateString = JSON.stringify(snap);
 
   return (
-    <group /*key={stateString} */>
+    <group key={stateString} >
     <mesh 
             castShadow 
             geometry={nodes.T_Shirt_male.geometry}
@@ -28,7 +28,7 @@ const Shirt = () => {
             material-roughness={1}
             dispose={null} 
         >
-           {/* {snap.isFullTexture && (
+            {snap.isFullTexture && (
                 <Decal
                     position={[0, 0, 0]}
                     rotation={[0, 0, 0]}
@@ -43,11 +43,11 @@ const Shirt = () => {
                     rotation={[0, 0, 0]}
                     scale={0.15}
                     map={logoTexture}
-                    map-anisotropy={16}
+                    anisotropy={16}  //new version 
                     depthTest={false}
                     depthWrite={true}
                 />    
-            )}*/}
+            )}
     </mesh>            
       
     </group>
